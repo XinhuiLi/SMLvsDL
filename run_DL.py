@@ -55,7 +55,8 @@ mt = args.mt
 cuda_avl = args.cuda
 scorename = args.scorename
 
-iter_ = int(os.environ['SLURM_ARRAY_TASK_ID'])
+# Temporary change to test the code
+iter_ = 0 # int(os.environ['SLURM_ARRAY_TASK_ID'])
 if pp:
     iter_ += 1
 ml = args.ml+str(iter_)+'/'
