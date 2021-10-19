@@ -9,7 +9,7 @@ from torch.optim.lr_scheduler import ReduceLROnPlateau
 import numpy as np
 import pandas as pd
 import nibabel as nib
-from models import AlexNet3D_Dropout
+from models import AlexNet3D_Dropout, fmriNet
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, mean_absolute_error, explained_variance_score, mean_squared_error, r2_score
 from dataclasses import dataclass
 from scipy.stats import pearsonr
@@ -28,7 +28,7 @@ class Config:
     es_va: int = 1
     es_pat: int = 40
     ml: str = '../../temper/'
-    mt: str = 'AlexNet3D_Dropout'
+    mt: str = 'fmriNet' #'AlexNet3D_Dropout'
     ssd: str = '../../SampleSplits/'
     scorename: str = 'label'
     cuda_avl: bool = True
@@ -410,6 +410,8 @@ def initializeNet(cfg):
     # Initialize net based on model type (mt, nc)
     if cfg.mt == 'AlexNet3D_Dropout':
         net = AlexNet3D_Dropout(num_classes=cfg.nc)
+    elif cfg.mt == 'fmriNet':
+        net = fmriNet(num_classes=cfg.nc)
     else:
         print('Check model type')
 
