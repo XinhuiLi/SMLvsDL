@@ -78,6 +78,7 @@ def read_X_y_5D_idx(df, idx, scorename, cr):
 
     # Read label
     y = df[scorename].iloc[idx]
+    y = y.astype(np.int_)
     if scorename == 'label':
         y -= 1
 
