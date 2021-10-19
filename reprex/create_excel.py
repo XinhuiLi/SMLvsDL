@@ -15,9 +15,8 @@ fbirn_sub_path = '/Users/xinhui.li/Documents/neuromark/Subject_selection/FBIRN/s
 data_dict = mat73.loadmat(fbirn_sub_path)
 ind = data_dict['FILE_ID'].index('diagnosis(1:sz; 2:hc)')
 diagnosis_label = data_dict['analysis_SCORE'][:,ind]
-diagnosis_label[diagnosis_label==2] = 0 # HC: 0; SZ: 1
 
-out_csv = '/Users/xinhui.li/Documents/neuromark/XL_FBIRN.csv'
+out_csv = '/Users/xinhui.li/Documents/neuromark/te_500_rep_0.csv'
 # '/data/users1/xinhui/neuromark/script/XL_FBIRN.csv'
 fields = ['smriPath', 'ic', 'label']
 rows = []

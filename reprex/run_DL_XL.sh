@@ -1,1 +1,1 @@
-python run_DL.py --tr_smp_sizes 100 200 --nReps 20 --nc 2 --bs 32 --lr 0.00001 --es 500 --pp 0 --es_va 1 --es_pat 20 --ml '../results/' --mt 'AlexNet3D_Dropout' --ssd 'SampleSplits/'  --scorename 'label' --nw 4 --cr 'clx' --tss 265 &
+python run_DL.py --tr_smp_sizes 500 --nReps 20 --nc 2 --bs 32 --lr 0.00001 --es 500 --pp 0 --es_va 1 --es_pat 20 --ml '../results/' --mt 'AlexNet3D_Dropout' --ssd 'SampleSplits/'  --scorename 'label' --nw 4 --cr 'clx' --tss 265 &
