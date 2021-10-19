@@ -39,7 +39,7 @@ class fmriNet(nn.Module):
             nn.MaxPool3d(kernel_size=3, stride=3),
         )
         self.classifier = nn.Sequential(nn.Dropout(),
-                                        nn.Linear(1792, 64),
+                                        nn.Linear(256, 64),
                                         nn.ReLU(inplace=True),
                                         nn.Dropout(),
                                         nn.Linear(64, num_classes),
@@ -51,7 +51,6 @@ class fmriNet(nn.Module):
             elif isinstance(m, nn.BatchNorm3d):
                 m.weight.data.fill_(1)
                 m.bias.data.zero_()
-    
     def forward(self, x):
         xp = self.features(x)
         x = xp.view(xp.size(0), -1)
