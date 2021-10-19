@@ -36,10 +36,10 @@ class fmriNet(nn.Module):
                       kernel_size=3, padding=1),
             nn.BatchNorm3d(128),
             nn.ReLU(inplace=True),
-            nn.MaxPool3d(kernel_size=3, stride=3),
+            nn.AdaptiveAvgPool3d([1, 1, 1]),
         )
         self.classifier = nn.Sequential(nn.Dropout(),
-                                        nn.Linear(256, 64),
+                                        nn.Linear(128, 64),
                                         nn.ReLU(inplace=True),
                                         nn.Dropout(),
                                         nn.Linear(64, num_classes),
