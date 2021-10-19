@@ -71,7 +71,8 @@ def read_X_y_5D_idx(df, idx, scorename, cr):
 
     # Read image
     fN = df['smriPath'].iloc[idx]
-    X = np.float32(nib.load(fN).get_fdata())
+    ic_idx = int(df['ic'].iloc[idx])
+    X = np.float32(nib.load(fN).get_fdata()[:,:,:,ic_idx])
     X = (X - X.min()) / (X.max() - X.min())
     X = np.reshape(X, (1, X.shape[0], X.shape[1], X.shape[2]))
 
@@ -344,6 +345,8 @@ def loadData(cfg, mode):
 
     # Batch Dataloader
     prefetch_factor = 8 # doesn't seem to be working; tried 1, 2, 4, 8, 16, 32 - mem used stays the same! need to verify the MRIdataset custom functionality maybe
+
+    # TODO: update
     dset = MRIDataset(cfg, mode)
 
     dloader = DataLoader(dset, batch_size=cfg.bs,
