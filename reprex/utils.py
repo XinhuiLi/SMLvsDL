@@ -355,7 +355,7 @@ def loadData(cfg, mode):
 
     return dloader
 
-
+'''
 def loadNet(cfg):
 
     # Load validated model
@@ -364,6 +364,16 @@ def loadNet(cfg):
     net = 0
     net = load_net_weights2(model, cfg.ml+'model_state_dict.pt')
 
+    return net
+'''
+
+def loadNet(cfg):
+    # Load validated model
+    # CNN
+    net = initializeNet(cfg)
+    if cfg.cuda_avl:
+	    net = torch.nn.DataParallel(net)    
+    net = load_net_weights2(net, cfg.ml+'model_state_dict.pt')
     return net
 
 

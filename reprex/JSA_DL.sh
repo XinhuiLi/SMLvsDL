@@ -12,16 +12,16 @@
 #SBATCH -A PSYC0002
 #SBATCH --oversubscribe 
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=aabrol@gsu.edu
+#SBATCH --mail-user=xli993@gatech.edu
 
 sleep 5s
 
 export OMP_NUM_THREADS=1
 export MODULEPATH=/apps/Compilers/modules-3.2.10/Debug-Build/Modules/3.2.10/modulefiles/
 
-source /home/users/aabrol/anaconda3/bin/activate
-conda activate AA_DL
+source /home/users/ga20055/anaconda3/bin/activate
+conda activate neuromark
 
-./run_DL.sh
+bash /data/users1/xinhui/neuromark/SMLvsDL/reprex/run_DL_XL.sh
 
 sleep 5s
