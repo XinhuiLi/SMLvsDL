@@ -1,14 +1,14 @@
 #!/bin/bash
 #SBATCH -N 1 
-#SBATCH -n 2
+#SBATCH -n 1
 #SBATCH -p qTRDGPUL
 #SBATCH --gres=gpu:1
 #SBATCH -c 4
 #SBATCH --mem-per-cpu=4000
 #SBATCH -t 7200
 #SBATCH -J DL
-#SBATCH -e ../slogs/err%A-%a.err
-#SBATCH -o ../slogs/out%A-%a.out
+#SBATCH -e err%A-%a.err
+#SBATCH -o out%A-%a.out
 #SBATCH -A PSYC0002
 #SBATCH --oversubscribe 
 #SBATCH --mail-type=ALL

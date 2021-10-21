@@ -64,7 +64,7 @@ if __name__ == '__main__':
     cfg = ut.updateIterML(cfg)
 
     #train
-    #ut.generate_validation_model(cfg)
+    ut.generate_validation_model(cfg)
 
     #test
     ut.evaluate_test_accuracy(cfg)
