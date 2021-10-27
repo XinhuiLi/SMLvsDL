@@ -55,7 +55,7 @@ if __name__ == '__main__':
         torch.cuda.manual_seed(args.seed)
 
     # Slurm TaskID is mapped to training sample size and CV rep by
-    iter = int(os.environ['SLURM_ARRAY_TASK_ID'])
+    iter = 0 #int(os.environ['SLURM_ARRAY_TASK_ID'])
 
     cfg = ut.Config(iter=iter, tr_smp_sizes=args.tr_smp_sizes, nReps=args.nReps, nc=args.nc, bs=args.bs, lr=args.lr, es=args.es, pp=args.pp,
                     es_va=args.es_va, es_pat=args.es_pat, ml=args.ml, mt=args.mt, ssd=args.ssd, scorename=args.scorename, cuda_avl=cuda_avl, nw=args.nw, cr=args.cr, tss=args.tss, rep=args.rep)

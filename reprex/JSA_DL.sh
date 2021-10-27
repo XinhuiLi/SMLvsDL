@@ -22,6 +22,6 @@ export MODULEPATH=/apps/Compilers/modules-3.2.10/Debug-Build/Modules/3.2.10/modu
 source /home/users/ga20055/anaconda3/bin/activate
 conda activate neuromark
 
-bash /data/users1/xinhui/neuromark/SMLvsDL/reprex/run_DL_XL.sh
+./run_DL_XL.sh
 
 sleep 5s

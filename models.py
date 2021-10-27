@@ -10,9 +10,9 @@ def conv3x3(in_planes, out_planes, stride=1):
     return nn.Conv3d(in_planes, out_planes, kernel_size=3, stride=stride,
                      padding=1, bias=False)
 
-class fmriNet(nn.Module):
+class neuromarkNet(nn.Module):
     def __init__(self, num_classes=2):
-        super(fmriNet, self).__init__()
+        super(neuromarkNet, self).__init__()
         self.features = nn.Sequential(
             nn.Conv3d(1, 64, kernel_size=3,
                       stride=1, padding=1),
