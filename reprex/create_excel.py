@@ -19,7 +19,9 @@ keys=['diagnosis(1:sz; 2:hc)','PANSS(positive)','PANSS(negative)']
 ind = [data_dict['FILE_ID'].index(i) for i in keys]
 
 label = data_dict['analysis_SCORE'][:,ind]
-out_csv = '/Users/xinhui.li/Documents/neuromark/te_1250_rep_0.csv' #tr_1250_rep_0, va_1250_rep_0, te_1250_rep_0
+
+train_sample = 53*250
+out_csv = f'/Users/xinhui.li/Documents/SMLvsDL/reprex/SampleSplitsAll/te_{train_sample}_rep_0.csv' #tr_1250_rep_0, va_1250_rep_0, te_1250_rep_0
 # '/data/users1/xinhui/neuromark/script/XL_FBIRN.csv' # XL_FBIRN_all
 fields = ['smriPath', 'ic', 'label', 'PANSS_positive', 'PANSS_negative'] # regression
 rows = []
@@ -34,12 +36,13 @@ for i in range(283, 312): # total 312; 1, 253; 253, 283; 283, 312
     if np.isnan( label[i-1, 1] )==True:
         continue
     
-    for j in [2, 20, 44, 6, 93]: #range(53):
+    for j in range(53): #[2, 20, 44, 6, 93]: 
         if label[i-1, 1] > 0 and label[i-1, 2] > 0:
-            rows.append( [ica_path, j, label[i-1,0], label[i-1,1], label[i-1,2]] )
+            # rows.append( [ica_path, j, label[i-1,0], label[i-1,1], label[i-1,2]] )
+            rows.append( [ica_path, ic_label[j], label[i-1,0], label[i-1,1], label[i-1,2]] )
         else:
-            rows.append( [ica_path, j, label[i-1,0], 0, 0] )
-        # rows.append( [ica_path, ic_label[j], label[i-1]] )
+            # rows.append( [ica_path, j, label[i-1,0], 0, 0] )
+            rows.append( [ica_path, ic_label[j], label[i-1,0], 0, 0] )
 
 with open(out_csv, 'w') as csvfile: 
     csvwriter = csv.writer(csvfile)
