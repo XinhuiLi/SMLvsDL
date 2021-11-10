@@ -1,3 +1,7 @@
+'''
+Create excel for NeuroMark ICA spatial map dataset
+'''
+
 import csv
 import mat73
 import numpy as np

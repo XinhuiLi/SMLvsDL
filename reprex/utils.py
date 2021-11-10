@@ -71,8 +71,10 @@ def read_X_y_5D_idx(df, idx, scorename, cr):
 
     # Read image
     fN = df['smriPath'].iloc[idx]
-    ic_idx = int(df['ic'].iloc[idx])
-    X = np.float32(nib.load(fN).get_fdata()[:,:,:,ic_idx])
+    # ICA spatial map
+    #ic_idx = int(df['ic'].iloc[idx])
+    #X = np.float32(nib.load(fN).get_fdata()[:,:,:,ic_idx])
+    X = np.float32(nib.load(fN).get_fdata())
     X = (X - X.min()) / (X.max() - X.min())
     X = np.reshape(X, (1, X.shape[0], X.shape[1], X.shape[2]))
 
@@ -355,17 +357,6 @@ def loadData(cfg, mode):
 
     return dloader
 
-'''
-def loadNet(cfg):
-
-    # Load validated model
-    net = initializeNet(cfg)
-    model = torch.nn.DataParallel(net)
-    net = 0
-    net = load_net_weights2(model, cfg.ml+'model_state_dict.pt')
-
-    return net
-'''
 
 def loadNet(cfg):
     # Load validated model

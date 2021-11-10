@@ -1,0 +1,2 @@
+# SZ classification
+python run_DL.py --tr_smp_sizes 285 --nReps 20 --nc 2 --bs 32 --lr 0.00001 --es 1000 --pp 0 --es_va 1 --es_pat 20 --ml 'clx_results/' --mt 'AlexNet3D_Dropout' --ssd 'SampleSplitsSMRI/' --scorename 'label' --nw 8 --cr 'clx' --tss 285
